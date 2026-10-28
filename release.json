@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "build": 19,
+  "tag": "v1.0.0-19",
+  "download_url": "https://github.com/stackof20/stackof20/releases/download/v1.0.0-19/stackof20-1.0.0-19.zip",
+  "archive_size": 1805101,
+  "sha256": "7f3ce52a05c6a7b188aad98370715e19d79c573f4b5628a0b1d18f808ea0eefa",
+  "minimum_macos": "15.0",
+  "architecture": "arm64",
+  "release_url": "https://github.com/stackof20/stackof20/releases/tag/v1.0.0-19",
+  "feed_url": "https://stackof20.com/updates/v1/appcast.xml",
+  "published_at": null
+}

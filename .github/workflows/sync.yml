@@ -1,0 +1,29 @@
+name: Sync verified cask
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '9,24,39,54 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: stackof20-tap
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - name: Update from signed release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 scripts/sync_release.py --target tap
+          git add Casks/stackof20.rb release.json
+          if ! git diff --cached --quiet; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'Update stackof20 cask from verified release'
+            git push
+          fi
